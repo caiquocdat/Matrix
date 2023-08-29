@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="#33FFFFFF"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:id="@+id/itemRel"
+    android:gravity="center">
+    <TextView
+        android:textColor="@color/white"
+        android:id="@+id/timeTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20:00"
+        android:textSize="15sp"/>
+    <TextView
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/levelTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="lv 9"
+        android:textSize="15sp"/>
+    <TextView
+        android:layout_alignParentRight="true"
+        android:id="@+id/checkTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WIN"
+        android:textColor="#00FF38"
+        android:textSize="15sp"/>
+
+
+</RelativeLayout>
