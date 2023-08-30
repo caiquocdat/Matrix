@@ -35,8 +35,8 @@ public class CanvasView extends View {
         super(context, attrs);
         path = new Path();
         paint = new Paint();
-        paint.setColor(Color.BLACK);
-        paint.setStrokeWidth(5);
+        paint.setColor(0xFFFF5733);
+        paint.setStrokeWidth(10);
         paint.setStyle(Paint.Style.STROKE);
     }
 
