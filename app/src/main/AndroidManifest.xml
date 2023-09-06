@@ -16,19 +16,16 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".HistoryActivity"
+            android:name="com.vn.matric.HistoryActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name="com.vn.matric.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.vn.matric.DisplayImageActivity"
             android:exported="false" />
         <activity
-            android:name=".DisplayImageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".FlashActivity"
+            android:name="com.vn.matric.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

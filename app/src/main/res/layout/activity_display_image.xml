@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DisplayImageActivity">
+    tools:context="com.vn.matric.DisplayImageActivity">
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/img_matric_4"/>
+        android:src="@drawable/img_matric_1"/>
     <TextView
         android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp"

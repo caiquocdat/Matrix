@@ -4,33 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="com.vn.matric.MainActivity">
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/img_theme_play"
+        android:src="@drawable/theme_splash_img"
         android:scaleType="fitXY"/>
-    <ImageView
-        android:id="@+id/logoImg"
-        android:layout_marginTop="30dp"
-        android:layout_centerHorizontal="true"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:src="@drawable/img_logo_play_1"/>
-    <ImageView
-        android:id="@+id/levelImg"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:src="@drawable/img_level_1"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/logoImg"/>
 
     <ImageView
         android:id="@+id/matricImg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@drawable/img_matric_5" />
+        android:src="@drawable/img_matric_1" />
     <RelativeLayout
         android:background="#68A8C5"
         android:id="@+id/pointRel"
@@ -41,30 +27,22 @@
     </RelativeLayout>
     <RelativeLayout
         android:gravity="center_vertical"
-        android:layout_marginBottom="80dp"
-        android:layout_alignParentBottom="true"
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
        >
-        <ImageView
-            android:layout_marginLeft="100dp"
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:src="@drawable/img_time"/>
         <TextView
-            android:layout_alignParentRight="true"
             android:id="@+id/timeTv"
-           android:layout_marginRight="100dp"
             android:layout_marginTop="11dp"
             android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:fontFamily="@font/press"
             android:textSize="20sp"
-            android:text="20s"/>
+            android:text="45s"/>
     </RelativeLayout>
 
-    <my.caiquocdat.treasurehunt.customview.CanvasView
+    <com.vn.matric.customview.CanvasView
         android:id="@+id/canvasView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

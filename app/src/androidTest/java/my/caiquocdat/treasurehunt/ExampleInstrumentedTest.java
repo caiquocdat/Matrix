@@ -1,4 +1,4 @@
-package my.caiquocdat.treasurehunt;
+package com.vn.matric;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("my.caiquocdat.treasurehunt", appContext.getPackageName());
+        assertEquals("com.vn.matric", appContext.getPackageName());
     }
 }

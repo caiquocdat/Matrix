@@ -1,4 +1,4 @@
-package my.caiquocdat.treasurehunt;
+package com.vn.matric;
 
 import org.junit.Test;
 
