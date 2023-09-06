@@ -1,22 +1,22 @@
 package com.vn.matric.model;
 
 public class HistoryModel {
-    private String checkStatus;
+    private String checkWin;
     private int level;
-    private String timeLeft;
+    private String time;
 
-    public HistoryModel(String checkStatus, int level, String timeLeft) {
-        this.checkStatus = checkStatus;
+    public HistoryModel(String checkWin, int level, String time) {
+        this.checkWin = checkWin;
         this.level = level;
-        this.timeLeft = timeLeft;
+        this.time = time;
     }
 
     public String getCheckStatus() {
-        return checkStatus;
+        return checkWin;
     }
 
     public void setCheckStatus(String checkStatus) {
-        this.checkStatus = checkStatus;
+        this.checkWin = checkStatus;
     }
 
     public int getLevel() {
@@ -28,11 +28,11 @@ public class HistoryModel {
     }
 
     public String getTimeLeft() {
-        return timeLeft;
+        return time;
     }
 
     public void setTimeLeft(String timeLeft) {
-        this.timeLeft = timeLeft;
+        this.time = timeLeft;
     }
 }
 

@@ -1,88 +1,86 @@
 package com.vn.matric;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-
 import com.vn.matric.data.DatabaseHelper;
-
-import com.vn.matric.adapter.OnGameEndListener;
+import com.vn.matric.adapter.OnCheckEndListener;
 import com.vn.matric.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding activityMainBinding;
+    private ActivityMainBinding binding;
     private Handler timerHandler;
     private Runnable timerRunnable;
-    private int timeLeft = 45; // Thời gian bắt đầu là 20s
+    private int remainingTime = 45; // Thời gian bắt đầu là 45s
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
-        View view = activityMainBinding.getRoot();
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
         setContentView(view);
         hideSystemUI();
-        if(getData()==1){
-            activityMainBinding.matricImg.setImageResource(R.drawable.img_matric_1);
-        }else  if(getData()==2){
-            activityMainBinding.matricImg.setImageResource(R.drawable.img_matric_2);
+        setupTimer();
+        int level = getLevel();
+
+        if (level == 1) {
+            binding.matricImageView.setImageResource(R.drawable.img_matric_1);
+        } else if (level == 2) {
+            binding.matricImageView.setImageResource(R.drawable.img_matric_2);
         }
-        setUpTime();
-        activityMainBinding.canvasView.setPointRel(activityMainBinding.pointRel);
-        activityMainBinding.canvasView.setOnGameEndListener(new OnGameEndListener() {
+
+        binding.canvasView.setPointRel(binding.pointRelativeLayout);
+        binding.canvasView.setOnCheckEndListener(new OnCheckEndListener() {
             @Override
-            public void onGameEnd(String check) {
-                float length=activityMainBinding.canvasView.getTotalLength();
-                if (check.equals("WIN")&&length>1600&&length<2000){
-                    Toast.makeText(MainActivity.this,
-                            "Bạn đã thắng ở cấp độ "+getData()+" với thời gian: "+
-                                    activityMainBinding.timeTv.getText().toString()
-                            , Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(MainActivity.this,
-                            "Bạn đã thua ở cấp độ "+getData()+" với thời gian: "+
-                                    activityMainBinding.timeTv.getText().toString()
-                            , Toast.LENGTH_SHORT).show();
+            public void onCheckEnd(String result) {
+                float length = binding.canvasView.getTotalLength();
+                Log.d("Test_20", "onCheckEnd: " + remainingTime);
+                String resultMessage;
+
+                if (result.equals("WIN") && length > 1100 && length < 2000 && remainingTime < 40) {
+                    resultMessage = "Bạn đã thắng ở level " + level + ", trong thời gian: " +
+                            binding.timeTextView.getText().toString();
+                } else {
+                    resultMessage = "Bạn đã thua ở level " + level + ", trong thời gian: " +
+                            binding.timeTextView.getText().toString();
                 }
-//                Log.d("Test_1", "onCreate: "+activityMainBinding.canvasView.getTotalLength());
-                DatabaseHelper databaseHelper = new DatabaseHelper(MainActivity.this);
-                databaseHelper.insertData(check,getData(),activityMainBinding.timeTv.getText().toString());
+
+                Toast.makeText(MainActivity.this, resultMessage, Toast.LENGTH_SHORT).show();
+                DatabaseHelper dbHelper = new DatabaseHelper(MainActivity.this);
+                dbHelper.insertData(result, level, binding.timeTextView.getText().toString());
+
                 if (timerHandler != null && timerRunnable != null) {
                     timerHandler.removeCallbacks(timerRunnable);
                 }
-
             }
         });
-
     }
 
-    private int getData() {
-        Intent intent= getIntent();
-        int level=intent.getIntExtra("level",0);
-        return level;
+    private int getLevel() {
+        Intent intent = getIntent();
+        return intent.getIntExtra("level", 0);
     }
 
-    private void setUpTime() {
+    private void setupTimer() {
         timerHandler = new Handler(); // Khởi tạo Handler
 
         // Khởi tạo và cài đặt Runnable
         timerRunnable = new Runnable() {
             @Override
             public void run() {
-                if (timeLeft > 0) {
-                    timeLeft--;
-                    activityMainBinding.timeTv.setText(timeLeft + "s");
+                if (remainingTime > 0) {
+                    remainingTime--;
+                    binding.timeTextView.setText(remainingTime + "s");
                     timerHandler.postDelayed(this, 1000); // Đặt lại Runnable sau 1s
                 } else {
                     // Thời gian đã hết, bạn có thể thực hiện các tác vụ khác ở đây
                     Toast.makeText(MainActivity.this, "Bạn đã thua", Toast.LENGTH_SHORT).show();
-                    Intent intent= new Intent(MainActivity.this,HomeActivity.class);
+                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                     startActivity(intent);
                 }
             }
@@ -109,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
+        // Để trống để không cho phép người dùng bấm nút Back
     }
 
     @Override

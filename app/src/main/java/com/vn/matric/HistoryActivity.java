@@ -2,40 +2,36 @@ package com.vn.matric;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.os.Bundle;
 import android.view.View;
-
 import com.vn.matric.data.DatabaseHelper;
 import com.vn.matric.databinding.ActivityHistoryBinding;
 import com.vn.matric.model.HistoryModel;
-
 import java.util.ArrayList;
-
 import com.vn.matric.adapter.HistoryAdapter;
 
 public class HistoryActivity extends AppCompatActivity {
-    private ActivityHistoryBinding activityHistoryBinding;
+    private ActivityHistoryBinding binding;
     private HistoryAdapter historyAdapter;
-    private ArrayList<HistoryModel> listHistory;
+    private ArrayList<HistoryModel> historyList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityHistoryBinding = ActivityHistoryBinding.inflate(getLayoutInflater());
-        View view = activityHistoryBinding.getRoot();
+        binding = ActivityHistoryBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
         setContentView(view);
         hideSystemUI();
-        listHistory=new ArrayList<>();
-        setUpDatRcv();
+        historyList = new ArrayList<>();
+        setupRecyclerView();
     }
 
-    private void setUpDatRcv() {
-        DatabaseHelper db = new DatabaseHelper(this);
-        listHistory = db.getAllData();
-        historyAdapter = new HistoryAdapter(listHistory, this);
-        activityHistoryBinding.historyRcv.setLayoutManager(new LinearLayoutManager(this));
-        activityHistoryBinding.historyRcv.setAdapter(historyAdapter);
+    private void setupRecyclerView() {
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
+        historyList = dbHelper.getAllData();
+        historyAdapter = new HistoryAdapter(historyList, this);
+        binding.historyRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.historyRecyclerView.setAdapter(historyAdapter);
     }
 
     private void hideSystemUI() {

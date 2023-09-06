@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/itemRelativeLayout"
     android:layout_width="match_parent"
     android:layout_height="40dp"
     android:background="#E6FFFFFF"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
-    android:id="@+id/itemRel"
     android:gravity="center">
+
     <TextView
-        android:textColor="#009FFF"
-        android:id="@+id/timeTv"
+        android:id="@+id/timeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="20:00"
-        android:textSize="15sp"/>
+        android:textSize="15sp"
+        android:textColor="#009FFF"/>
+
     <TextView
-        android:textColor="#009FFF"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/levelTv"
+        android:id="@+id/levelTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="lv 9"
-        android:textSize="15sp"/>
+        android:textSize="15sp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#009FFF"/>
+
     <TextView
-        android:layout_alignParentRight="true"
-        android:id="@+id/checkTv"
+        android:id="@+id/checkTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="WIN"
+        android:textSize="15sp"
         android:textColor="#00FF38"
-        android:textSize="15sp"/>
-
+        android:layout_alignParentRight="true"/>
 
 </RelativeLayout>

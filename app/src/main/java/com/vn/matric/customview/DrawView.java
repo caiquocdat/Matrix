@@ -11,26 +11,26 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import com.vn.matric.adapter.OnGameEndListener;
+import com.vn.matric.adapter.OnCheckEndListener;
 import com.vn.matric.HomeActivity;
 
-public class CanvasView extends View {
+public class DrawView extends View {
     private Path path;
     private Paint paint;
     private boolean isDrawingFinished = false;
     private boolean isToastShown = false;
     private RelativeLayout pointRel;
-    private OnGameEndListener onGameEndListener;
+    private OnCheckEndListener onCheckEndListener;
 
     // Biến mới để lưu trữ tọa độ và chiều dài
     private float oldX, oldY;
     private float totalLength = 0;
 
-    public void setOnGameEndListener(OnGameEndListener listener) {
-        this.onGameEndListener = listener;
+    public void setOnCheckEndListener(OnCheckEndListener listener) {
+        this.onCheckEndListener = listener;
     }
 
-    public CanvasView(Context context, AttributeSet attrs) {
+    public DrawView(Context context, AttributeSet attrs) {
         super(context, attrs);
         path = new Path();
         paint = new Paint();
@@ -85,8 +85,8 @@ public class CanvasView extends View {
                     if (x >= pointRelX && x <= (pointRelX + pointRelWidth) &&
                             y >= pointRelY && y <= (pointRelY + pointRelHeight)) {
                         if (!isToastShown) {
-                            if (onGameEndListener != null) {
-                                onGameEndListener.onGameEnd("WIN");
+                            if (onCheckEndListener != null) {
+                                onCheckEndListener.onCheckEnd("WIN");
                             }
                             Intent intent = new Intent(getContext(), HomeActivity.class);
                             getContext().startActivity(intent);
@@ -102,8 +102,8 @@ public class CanvasView extends View {
                 isDrawingFinished = true;
                 invalidate();
                 if (!isToastShown) {
-                    if (onGameEndListener != null) {
-                        onGameEndListener.onGameEnd("LOSE");
+                    if (onCheckEndListener != null) {
+                        onCheckEndListener.onCheckEnd("LOSE");
                     }
                     Intent intent = new Intent(getContext(), HomeActivity.class);
                     getContext().startActivity(intent);

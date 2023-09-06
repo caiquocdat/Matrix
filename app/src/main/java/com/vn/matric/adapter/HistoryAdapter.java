@@ -28,7 +28,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_history, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_history_rcv, parent, false);
         return new ViewHolder(view);
     }
 
@@ -63,10 +63,10 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            checkStatusTv = itemView.findViewById(R.id.checkTv);
-            levelTv = itemView.findViewById(R.id.levelTv);
-            timeLeftTv = itemView.findViewById(R.id.timeTv);
-            itemRel = itemView.findViewById(R.id.itemRel);
+            checkStatusTv = itemView.findViewById(R.id.checkTextView);
+            levelTv = itemView.findViewById(R.id.levelTextView);
+            timeLeftTv = itemView.findViewById(R.id.timeTextView);
+            itemRel = itemView.findViewById(R.id.itemRelativeLayout);
         }
     }
 }

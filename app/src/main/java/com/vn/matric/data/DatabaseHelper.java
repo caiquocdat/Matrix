@@ -11,12 +11,12 @@ import com.vn.matric.model.HistoryModel;
 import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String DB_NAME = "GameData.db";
+    private static final String DB_NAME = "GameMatric.db";
     private static final int DB_VERSION = 1;
-    private static final String TABLE_NAME = "game_status";
-    private static final String COL_CHECK = "check_status";
-    private static final String COL_LEVEL = "level";
-    private static final String COL_TIME = "time_left";
+    private static final String TABLE_NAME = "game";
+    private static final String CHECK = "check_";
+    private static final String LEVEL = "level";
+    private static final String TIME = "time";
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -26,9 +26,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String createTableSQL = "CREATE TABLE " + TABLE_NAME + " (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                COL_CHECK + " TEXT," +
-                COL_LEVEL + " INTEGER," +
-                COL_TIME + " TEXT)";
+                CHECK + " TEXT," +
+                LEVEL + " INTEGER," +
+                TIME + " TEXT)";
         db.execSQL(createTableSQL);
     }
 
@@ -40,9 +40,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean insertData(String check, int level, String timeLeft) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_CHECK, check);
-        contentValues.put(COL_LEVEL, level);
-        contentValues.put(COL_TIME, timeLeft);
+        contentValues.put(CHECK, check);
+        contentValues.put(LEVEL, level);
+        contentValues.put(TIME, timeLeft);
         long result = db.insert(TABLE_NAME, null, contentValues);
         return result != -1;
     }
@@ -53,9 +53,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                String checkStatus = cursor.getString(cursor.getColumnIndexOrThrow(COL_CHECK));
-                int level = cursor.getInt(cursor.getColumnIndexOrThrow(COL_LEVEL));
-                String timeLeft = cursor.getString(cursor.getColumnIndexOrThrow(COL_TIME));
+                String checkStatus = cursor.getString(cursor.getColumnIndexOrThrow(CHECK));
+                int level = cursor.getInt(cursor.getColumnIndexOrThrow(LEVEL));
+                String timeLeft = cursor.getString(cursor.getColumnIndexOrThrow(TIME));
                 HistoryModel historyModel = new HistoryModel(checkStatus, level, timeLeft);
                 historyList.add(historyModel);
             } while (cursor.moveToNext());

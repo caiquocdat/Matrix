@@ -5,44 +5,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.vn.matric.MainActivity">
+
     <ImageView
+        android:id="@+id/backgroundImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/theme_splash_img"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY" />
 
     <ImageView
-        android:id="@+id/matricImg"
+        android:id="@+id/matricImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:src="@drawable/img_matric_1" />
+
     <RelativeLayout
+        android:id="@+id/pointRelativeLayout"
         android:background="#68A8C5"
-        android:id="@+id/pointRel"
         android:layout_centerInParent="true"
         android:layout_width="10dp"
-        android:layout_height="10dp">
+        android:layout_height="10dp" />
 
-    </RelativeLayout>
     <RelativeLayout
         android:gravity="center_vertical"
         android:layout_marginTop="80dp"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-       >
+        android:layout_height="40dp" >
+
         <TextView
-            android:id="@+id/timeTv"
+            android:id="@+id/timeTextView"
             android:layout_marginTop="11dp"
             android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:textSize="20sp"
-            android:text="45s"/>
+            android:text="45s" />
     </RelativeLayout>
-
-    <com.vn.matric.customview.CanvasView
+    <com.vn.matric.customview.DrawView
         android:id="@+id/canvasView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
